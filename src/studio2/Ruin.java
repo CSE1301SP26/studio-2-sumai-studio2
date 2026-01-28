@@ -13,27 +13,38 @@ public class Ruin {
     double winChance = in.nextDouble();
     System.out.println("The win limit amount: ");
     int winLimit = in.nextInt();
+    System.out.println("The amount of days you will play: ");
+   int totalSimulations = in.nextInt();
+    //int day = 0;
 
-    int currentAmount = startAmount;
-    while(currentAmount > 0 && currentAmount < winLimit){
+    
+    for (int i = 1; i <= totalSimulations; i++ ){
+      int currentAmount = startAmount;
+      int plays_win = 0;
+      int plays_lose =0;
+    while(currentAmount > 0 && currentAmount < winLimit ){
           if (Math.random() < winChance){
-            System.out.println("Win");
             currentAmount++;
+            plays_win++; 
+            //System.out.println("Win");
           }
           else{
-            System.out.println("Lose");
             currentAmount--;
+            plays_lose++;
+            //System.out.println("Lose");
           }
+         // day++;
     }
     if(currentAmount == 0){
-        System.out.println("Ruin");
+        System.out.println( "Simulation " + i + ':' + plays_lose + " Lose" + plays_win+"wins");
     }
     else if(currentAmount == winLimit){
-        System.out.println("Success");
+        System.out.println("Simulation " + i + ':' + plays_win + " Win");
     }
+  }
     
-   
 
+    
 
 
 
